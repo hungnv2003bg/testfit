@@ -47,7 +47,7 @@ public class Users {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-        name = "user_groups",
+        name = "users_groups_relation", // Changed to avoid conflict with Group entity table name
         joinColumns = @JoinColumn(name = "user_id"),
         inverseJoinColumns = @JoinColumn(name = "group_id")
     )
