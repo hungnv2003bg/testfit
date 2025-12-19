@@ -8,7 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "sop_document_permissions")
+@Table(name = "sopdocument_permissions")
 @Getter
 @Setter
 @AllArgsConstructor

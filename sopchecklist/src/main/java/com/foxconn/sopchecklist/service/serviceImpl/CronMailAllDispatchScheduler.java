@@ -38,9 +38,15 @@ public class CronMailAllDispatchScheduler {
     @Value("${mail.spExec:EXEC dbo.sp_MailWaiting_ITSystem_Insert @MailTo=?, @MailCC=?, @MailBCC=?, @Subject=?, @Body=?}")
     private String spExec;
 
+    @Value("${mail.queue.enabled:true}")
+    private boolean mailQueueEnabled;
+
     // Run every 5 minutes
-    // @Scheduled(fixedDelay = 300000)
+    @Scheduled(fixedDelay = 300000)
     public void dispatchPendingMails() {
+        if (!mailQueueEnabled) {
+            return;
+        }
         dispatchOnce();
     }
 
@@ -247,5 +253,4 @@ public class CronMailAllDispatchScheduler {
         return "total=" + total + ", sent=" + sent + ", failed=" + failed;
     }
 }
-
 

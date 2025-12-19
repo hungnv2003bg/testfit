@@ -65,12 +65,14 @@
             <artifactId>mssql-jdbc</artifactId>
             <scope>runtime</scope>
         </dependency>
-        <!-- PostgreSQL - Enable cho demo (nhẹ hơn SQL Server) -->
+        <!-- Nếu sau này cần PostgreSQL thì mở ra -->
+        <!--
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <scope>runtime</scope>
         </dependency>
+        -->
 
         <!-- Lombok -->
         <dependency>

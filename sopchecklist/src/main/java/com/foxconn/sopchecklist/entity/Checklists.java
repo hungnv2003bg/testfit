@@ -39,7 +39,7 @@ public class Checklists {
     private Long lastEditedBy;
 
     @ElementCollection
-    @CollectionTable(name = "checklist_implementers", joinColumns = @JoinColumn(name = "checklist_id"))
+    @CollectionTable(name = "Checklist_Implementers", joinColumns = @JoinColumn(name = "checklist_id"))
     @Column(name = "implementer", columnDefinition = "NVARCHAR(100)")
     private List<String> implementers; 
 

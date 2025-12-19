@@ -7,6 +7,7 @@ import com.foxconn.sopchecklist.repository.CronMailAllRepository;
 import com.foxconn.sopchecklist.repository.MailRecipientAllRepository;
 import com.foxconn.sopchecklist.repository.TypeCronMailRepository;
 import com.foxconn.sopchecklist.service.TimeService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,6 +24,9 @@ public class CronMailAllSendService {
     private final MailRecipientAllRepository mailRecipientRepository;
     private final TypeCronMailRepository typeCronMailRepository;
     private final TimeService timeService;
+
+    @Value("${mail.queue.enabled:true}")
+    private boolean mailQueueEnabled;
 
     public CronMailAllSendService(CronMailAllRepository mailRepository,
                                   MailRecipientAllRepository mailRecipientRepository,
@@ -63,6 +67,9 @@ public class CronMailAllSendService {
      * Gửi mail tổng quát với type name
      */
     private CronMailAll sendMail(String typeName, String subject, String body, Long referenceId) {
+        if (!mailQueueEnabled) {
+            return null;
+        }
         try {
             // Tìm hoặc tạo TypeCronMail
             TypeCronMail type = typeCronMailRepository.findByTypeName(typeName);
@@ -112,6 +119,9 @@ public class CronMailAllSendService {
      * Gửi mail chỉ định danh sách người nhận (bỏ qua cấu hình recipients mặc định)
      */
     public CronMailAll sendMailCustom(String typeName, String toCsv, String ccCsv, String bccCsv, String subject, String body, Long referenceId) {
+        if (!mailQueueEnabled) {
+            return null;
+        }
         try {
             TypeCronMail type = typeCronMailRepository.findByTypeName(typeName);
             if (type == null) {
@@ -162,4 +172,3 @@ public class CronMailAllSendService {
         }
     }
 }
-

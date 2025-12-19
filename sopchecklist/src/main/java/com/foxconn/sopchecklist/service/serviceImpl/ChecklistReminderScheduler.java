@@ -40,8 +40,8 @@ public class ChecklistReminderScheduler {
     @Autowired
     private CronMailAllRepository cronMailAllRepository;
 
-    // Tạm thời tắt scheduler 5 phút để tránh lỗi DB lúc khởi động
-    // @Scheduled(cron = "0 */5 * * * ?", zone = "Asia/Ho_Chi_Minh")
+    // Chạy mỗi 5 phút để kiểm tra checklist detail đến deadline
+    @Scheduled(cron = "0 */5 * * * ?", zone = "Asia/Ho_Chi_Minh")
     public void checkAndSendReminders() {
         LocalDateTime now = timeService.nowVietnam();
         log.info("ChecklistReminderScheduler: Checking for overdue checklist details at {}", now);

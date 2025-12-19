@@ -9,7 +9,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "time_repeat_checklist")
+@Table(name = "Time_Repeat_Checklist")
 @Getter
 @Setter
 @AllArgsConstructor

@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
-@Table(name = "users")
+@Table(name = "Users")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -47,7 +47,7 @@ public class Users {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-        name = "users_groups_relation", // Changed to avoid conflict with Group entity table name
+        name = "user_groups",
         joinColumns = @JoinColumn(name = "user_id"),
         inverseJoinColumns = @JoinColumn(name = "group_id")
     )
