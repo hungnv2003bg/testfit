@@ -12,6 +12,8 @@ import javax.sql.DataSource;
 @Configuration
 public class MailDbConfig {
 
+    // Removed separate mail datasource configuration to use the main datasource for everything in demo mode
+    /*
     @Bean
     @ConfigurationProperties("mail.datasource")
     public DataSourceProperties mailDataSourceProperties() {
@@ -23,9 +25,11 @@ public class MailDbConfig {
     public DataSource mailDataSource() {
         return mailDataSourceProperties().initializeDataSourceBuilder().build();
     }
+    */
 
     @Bean(name = "mailJdbcTemplate")
-    public JdbcTemplate mailJdbcTemplate(@Qualifier("mailDataSource") DataSource dataSource) {
+    public JdbcTemplate mailJdbcTemplate(DataSource dataSource) {
+        // Use the primary dataSource instead of a separate mailDataSource
         return new JdbcTemplate(dataSource);
     }
 

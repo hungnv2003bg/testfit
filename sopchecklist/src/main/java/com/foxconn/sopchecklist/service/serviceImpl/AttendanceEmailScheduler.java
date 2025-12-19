@@ -84,7 +84,7 @@ public class AttendanceEmailScheduler {
      * Chỉ gửi email nếu có thay đổi so với lần gửi trước (8:30 AM)
      * Cron expression: "0 30 13 * * ?" = giây phút giờ ngày tháng thứ
      */
-    @Scheduled(cron = "0 30 13 * * ?", zone = "Asia/Ho_Chi_Minh")
+    // @Scheduled(cron = "0 30 13 * * ?", zone = "Asia/Ho_Chi_Minh")
     @Transactional
     public void sendAfternoonAttendanceEmailIfChanged() {
         LocalDate today = getToday();
