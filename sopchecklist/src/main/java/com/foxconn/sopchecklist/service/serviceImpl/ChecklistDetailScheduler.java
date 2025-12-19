@@ -43,9 +43,9 @@ public class ChecklistDetailScheduler {
     @PersistenceContext
     private EntityManager entityManager;
 
-    // Chạy mỗi 5 phút để sinh checklist detail nếu đến hạn
-    @Scheduled(fixedDelay = 300000)
-    @Transactional(readOnly = false)
+    // Tạm thời tắt scheduler 5 phút để tránh lỗi DB lúc khởi động
+    // @Scheduled(fixedDelay = 300000)
+    // @Transactional(readOnly = false)
     public void generateDetailsBySchedule() {
         LocalDateTime now = timeService.nowVietnam();
         try {
