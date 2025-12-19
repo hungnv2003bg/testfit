@@ -4,6 +4,7 @@ import com.foxconn.sopchecklist.entity.CronMailAll;
 import com.foxconn.sopchecklist.service.CronMailAllService;
 import com.foxconn.sopchecklist.service.CronMailAllSendService;
 import com.foxconn.sopchecklist.service.serviceImpl.CronMailAllDispatchScheduler;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -13,6 +14,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/cron-mail-all")
 @CrossOrigin
+@ConditionalOnProperty(name = "mail.queue.enabled", havingValue = "true", matchIfMissing = true)
 public class CronMailAllController {
 
     private final CronMailAllService service;
@@ -119,4 +121,3 @@ public class CronMailAllController {
         return result;
     }
 }
-
