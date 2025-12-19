@@ -10,8 +10,8 @@ import java.util.List;
 public interface ChecklistsRepository extends JpaRepository<Checklists, Long> {
     @Query(value = "\n" +
             "SELECT DISTINCT c.*\n" +
-            "FROM Checklists c\n" +
-            "JOIN Checklist_Implementers ci ON ci.checklist_id = c.id\n" +
+            "FROM checklists c\n" +
+            "JOIN checklist_implementers ci ON ci.checklist_id = c.id\n" +
             "LEFT JOIN user_groups ug ON CONCAT('user:', ug.user_id) = ci.implementer\n" +
             "WHERE ci.implementer = CONCAT('group:', :groupId)\n" +
             "   OR ug.group_id = :groupId\n",

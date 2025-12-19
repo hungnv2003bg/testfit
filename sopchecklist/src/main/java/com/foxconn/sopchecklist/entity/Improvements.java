@@ -11,7 +11,7 @@ import java.util.List;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "Improvements")
+@Table(name = "improvements")
 @Getter
 @Setter
 @AllArgsConstructor

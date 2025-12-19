@@ -11,7 +11,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "User_Attendance",
+@Table(name = "user_attendance",
        uniqueConstraints = @UniqueConstraint(name = "uk_user_attendance_user",
                columnNames = {"user_id"}))
 @Getter

@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
-@Table(name = "groups")
+@Table(name = "user_groups")
 @Getter
 @Setter
 @AllArgsConstructor

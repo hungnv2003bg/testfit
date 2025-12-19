@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table(name = "SOPDocuments")
+@Table(name = "sop_documents")
 @Getter
 @Setter
 @AllArgsConstructor

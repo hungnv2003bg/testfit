@@ -10,7 +10,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "Roles")
+@Table(name = "roles")
 @Getter
 @Setter
 @AllArgsConstructor

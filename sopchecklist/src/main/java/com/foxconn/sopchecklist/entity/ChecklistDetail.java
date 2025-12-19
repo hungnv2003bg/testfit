@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table(name = "Checklist_Details",
+@Table(name = "checklist_details",
        uniqueConstraints = @UniqueConstraint(name = "uk_checklist_implementer_scheduled",
                columnNames = {"checklist_id", "implementer", "scheduled_at"}))
 @Getter
