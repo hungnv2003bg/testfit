@@ -42,7 +42,7 @@ public class ImprovementReminderScheduler {
     private CronMailAllRepository cronMailAllRepository;
 
     // Chạy mỗi ngày lúc 8:00 sáng và 2:00 chiều
-    @Scheduled(cron = "0 0 8,14 * * ?", zone = "Asia/Ho_Chi_Minh")
+    // @Scheduled(cron = "0 0 8,14 * * ?", zone = "Asia/Ho_Chi_Minh")
     @Transactional
     public void checkAndSendReminders() {
         LocalDateTime now = timeService.nowVietnam();

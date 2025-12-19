@@ -35,7 +35,7 @@ public class AttendanceAutoGenerateScheduler {
     private TimeService timeService;
 
     // Chạy mỗi ngày lúc 00:05 theo giờ Việt Nam
-    @Scheduled(cron = "0 5 0 * * ?", zone = "Asia/Ho_Chi_Minh")
+    // @Scheduled(cron = "0 5 0 * * ?", zone = "Asia/Ho_Chi_Minh")
     @Transactional
     public void generateDailyAttendance() {
         LocalDate today = getToday();
