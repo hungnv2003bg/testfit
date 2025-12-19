@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,7 @@ import org.slf4j.LoggerFactory;
  * Hỗ trợ nhiều loại mail khác nhau (SIGNUP, SOP, CHECKLISTDONE, etc.)
  */
 @Component
+@ConditionalOnProperty(name = "mail.queue.enabled", havingValue = "true", matchIfMissing = true)
 public class CronMailAllDispatchScheduler {
 
     private static final Logger log = LoggerFactory.getLogger(CronMailAllDispatchScheduler.class);
@@ -253,4 +255,3 @@ public class CronMailAllDispatchScheduler {
         return "total=" + total + ", sent=" + sent + ", failed=" + failed;
     }
 }
-

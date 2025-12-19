@@ -1,6 +1,7 @@
 package com.foxconn.sopchecklist.config;
 
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,17 +15,20 @@ public class MailDbConfig {
 
     @Bean
     @ConfigurationProperties("mail.datasource")
+    @ConditionalOnProperty(name = "mail.queue.enabled", havingValue = "true", matchIfMissing = true)
     public DataSourceProperties mailDataSourceProperties() {
         return new DataSourceProperties();
     }
 
     @Bean(name = "mailDataSource")
     @ConfigurationProperties("mail.datasource.hikari")
+    @ConditionalOnProperty(name = "mail.queue.enabled", havingValue = "true", matchIfMissing = true)
     public DataSource mailDataSource() {
         return mailDataSourceProperties().initializeDataSourceBuilder().build();
     }
 
     @Bean(name = "mailJdbcTemplate")
+    @ConditionalOnProperty(name = "mail.queue.enabled", havingValue = "true", matchIfMissing = true)
     public JdbcTemplate mailJdbcTemplate(@Qualifier("mailDataSource") DataSource dataSource) {
         return new JdbcTemplate(dataSource);
     }
@@ -34,5 +38,4 @@ public class MailDbConfig {
         return new JdbcTemplate(dataSource);
     }
 }
-
 
